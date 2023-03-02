@@ -1,0 +1,18 @@
+{% extends 'house_prediction_app/base.html' %}
+{% load static %}
+    {% block title %}
+        Mimmobilier - Estimation
+    {% endblock %}
+
+    {% block extra-head %}
+        <link rel="stylesheet" href="{% static 'client/reveal_estimation_style.css' %}">
+    {% endblock %}
+
+{% block body %}
+    {% include "house_prediction_app/client/includes/navbar.html" %}
+
+    <div class="reveal__container">
+        <h1 class="reveal__title">Mimmobilier est prêt à vous révéler votre estimation !</h1>
+        <p class="reveal__subtitle">L'estimation de votre bien immobilier est de : <span class="price">{{ prediction|floatformat:2 }}</span>€</p>
+    </div>
+{% endblock %}

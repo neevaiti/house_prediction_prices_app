@@ -1,0 +1,91 @@
+{% extends 'house_prediction_app/base.html' %}
+{% load static %}
+
+{% block title %}
+    Mimmobilier
+{% endblock %}
+
+{% block extra-head %}
+    <link rel="stylesheet" href="{% static 'client/home_style.css' %}">
+{% endblock %}
+
+{% block body %}
+
+    {% include "house_prediction_app/client/includes/navbar.html" %}
+<main class="sign">
+        <div class="sign__container">
+            <form method="post" action="{% url 'votre-prix' %}">
+            {% csrf_token %}
+                <h1 class="form__title">Mimmobilier</h1>
+                <p class="form__subtitle">Le meilleur estimateur de biens immobiliers.</p>
+
+                <label class="label" >
+                     Surface de vie (m²) :
+                    {{ form.sqft_living }}
+                </label>
+
+                <label class="label">
+                     Surface du terrain :
+                    {{ form.sqft_lot }}
+                </label>
+
+                <label class="label">
+                     Nombre de pièces :
+                    {{ form.bedrooms }}
+                </label>
+
+                <label class="label">
+                     Nombre de salles d'eau :
+                    {{ form.bathrooms }}
+                </label>
+
+                <label class="label">
+                     Année de construction :
+                    {{ form.yr_built }}
+                </label>
+
+                <label class="label">
+                     Année de rénovation :
+                    {{ form.yr_renovated }}
+                </label>
+
+                <label class="label">
+                     Code postal :
+                    {{ form.zipcode }}
+                </label>
+
+                <label class="label">
+                     État du bien :
+                    {{ form.condition }}
+                </label>
+
+                <label class="label">
+                     Classe du bien :
+                    {{ form.grade }}
+                </label>
+
+                <label class="label">
+                     Vue sur l'eau :
+                    {{ form.waterfront }}
+                </label>
+
+                <label class="label">
+                     Nombre d'étages :
+                    {{ form.floors }}
+                </label>
+
+                <label class="label">
+                     Surface d'étage :
+                    {{ form.sqft_above }}
+                </label>
+
+                <label class="label">
+                     Surface du sous-sol :
+                    {{ form.sqft_basement }}
+                </label>
+                <button type="submit" class="button form__button">Estimer</button>
+        </form>
+
+    </div>
+</main>
+{% endblock %}
