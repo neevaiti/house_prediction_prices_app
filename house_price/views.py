@@ -5,7 +5,7 @@ from .forms import EstimateForm
 
 def estimation(request):
     form = EstimateForm()
-    return render(request, 'estimation.html', {'form': form})
+    return render(request, 'house_prediction_app/client/estimation.html', {'form': form})
 
 def estimate(request):
     if request.method == 'POST':
@@ -51,11 +51,11 @@ def estimate(request):
 
             # Ajouter la nouvelle estimation dans le contexte et rediriger vers la page de résultats
             context = {'prediction': prediction}
-            return render(request, 'test.html', context)
+            return render(request, 'house_prediction_app/client/reveal_estimation.html', context)
     else:
         form = EstimateForm()
     # Afficher le formulaire pour la première fois ou afficher le formulaire avec des erreurs de validation
-    return render(request, 'estimation.html', {'form': estimation_form})
+    return render(request, 'house_prediction_app/client/estimation.html', {'form': estimation_form})
 
 # def estimate(request):
 #     if request.method == 'POST':
@@ -99,7 +99,7 @@ def estimate(request):
 #             # Utilisation du modèle pour faire la prédiction
 #             prediction = pipeline.predict(data)
 #
-#         return render(request, 'test.html', {'prediction': prediction})
+#         return render(request, 'reveal_estimation.html', {'prediction': prediction})
 #     else:
 #         form = EstimateForm()
 #
